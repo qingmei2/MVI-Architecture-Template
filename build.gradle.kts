@@ -22,6 +22,12 @@ version = properties("pluginVersion")
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    maven {
+        setUrl("https://jitpack.io")
+    }
+    maven {
+        setUrl("https://maven.aliyun.com/repository/public")
+    }
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
@@ -59,7 +65,6 @@ tasks {
             kotlinOptions.jvmTarget = it
         }
     }
-
     wrapper {
         gradleVersion = properties("gradleVersion")
     }
@@ -112,5 +117,9 @@ tasks {
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
+    }
+
+    dependencies {
+        compileOnly(files("lib/wizard-template.jar"))
     }
 }

@@ -1,8 +1,6 @@
 # MVI-Architecture-Template
 
-![Build](https://github.com/qingmei2/MVI-Architecture-Template/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
+![参考文档](https://www.bigademo.com/2021/01/20/AndroidStudio%204.1%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1/index.html)
 
 ## Template ToDo list
 - [x] Create a new [IntelliJ Platform Plugin Template][template] project.

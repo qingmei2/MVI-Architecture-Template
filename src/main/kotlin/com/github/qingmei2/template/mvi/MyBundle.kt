@@ -1,8 +1,8 @@
-package com.github.qingmei2.mviarchitecturetemplate
+package com.github.qingmei2.template.mvi
 
 import com.intellij.DynamicBundle
-import org.jetbrains.annotations.NonNls
-import org.jetbrains.annotations.PropertyKey
+import org.gradle.internal.impldep.org.jetbrains.annotations.NonNls
+import org.gradle.internal.impldep.org.jetbrains.annotations.PropertyKey
 
 @NonNls
 private const val BUNDLE = "messages.MyBundle"

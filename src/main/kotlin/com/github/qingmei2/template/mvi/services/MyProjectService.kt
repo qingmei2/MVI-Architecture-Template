@@ -1,7 +1,7 @@
-package com.github.qingmei2.mviarchitecturetemplate.services
+package com.github.qingmei2.template.mvi.services
 
 import com.intellij.openapi.project.Project
-import com.github.qingmei2.mviarchitecturetemplate.MyBundle
+import com.github.qingmei2.template.mvi.MyBundle
 
 class MyProjectService(project: Project) {
 
