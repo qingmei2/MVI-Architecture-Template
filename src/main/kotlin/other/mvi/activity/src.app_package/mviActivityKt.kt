@@ -1,7 +1,7 @@
 package other.mvi.activity.src.app_package
 
 fun mviActivityKt(
-        applicationPackage: String,
+        applicationPackage: String?,
         kotlinEscapedPackageName: String,
         className: String,
         intentClass: String,

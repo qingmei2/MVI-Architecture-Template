@@ -1,4 +1,4 @@
-package other.mvvm.activity.res.layout
+package other.mvi.activity.res.layout
 
 fun mviActivityXml() = """
 <?xml version="1.0" encoding="utf-8"?>

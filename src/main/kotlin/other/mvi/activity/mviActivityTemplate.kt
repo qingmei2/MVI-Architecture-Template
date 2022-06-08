@@ -22,7 +22,13 @@ val mviActivityTemplate
             constraints = listOf(Constraint.NONEMPTY)
         }
 
-        val packageName = defaultPackageNameParameter
+        val packageName = stringParameter {
+            name = "Package name"
+            visible = { !isNewModule }
+            default = "com.mycompany.myapp"
+            constraints = listOf(Constraint.PACKAGE)
+            suggest = { packageName }
+        }
 
         val activityClass = stringParameter {
             name = "Activity Name"
@@ -37,14 +43,14 @@ val mviActivityTemplate
             default = "activity_main"
             help = "请输入布局的名字"
             constraints = listOf(Constraint.CLASS, Constraint.UNIQUE, Constraint.NONEMPTY)
-            suggest = { activityToLayout(activityClass.value) }
+            suggest = { "activity_${objectKind.value.toLowerCase()}" }
         }
 
         val viewModelClass = stringParameter {
             name = "ViewModel Name"
             default = "MainViewModel"
             help = ""
-            suggest = { "${extractLetters(objectKind.value)}ViewModel}" }
+            suggest = { "${extractLetters(objectKind.value)}ViewModel" }
             constraints = listOf(Constraint.CLASS, Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
@@ -52,7 +58,7 @@ val mviActivityTemplate
             name = "Intent Name"
             default = "MainIntent"
             help = ""
-            suggest = { "${extractLetters(objectKind.value)}Intent}" }
+            suggest = { "${extractLetters(objectKind.value)}Intent" }
             constraints = listOf(Constraint.CLASS, Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
@@ -60,7 +66,7 @@ val mviActivityTemplate
             name = "ViewState Name"
             default = "MainViewState"
             help = ""
-            suggest = { "${extractLetters(objectKind.value)}ViewState}" }
+            suggest = { "${extractLetters(objectKind.value)}ViewState" }
             constraints = listOf(Constraint.CLASS, Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
@@ -68,7 +74,7 @@ val mviActivityTemplate
             name = "Action Name"
             default = "MainAction"
             help = ""
-            suggest = { "${extractLetters(objectKind.value)}Action}" }
+            suggest = { "${extractLetters(objectKind.value)}Action" }
             constraints = listOf(Constraint.CLASS, Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
@@ -76,7 +82,7 @@ val mviActivityTemplate
             name = "Result Name"
             default = "MainResult"
             help = ""
-            suggest = { "${extractLetters(objectKind.value)}Result}" }
+            suggest = { "${extractLetters(objectKind.value)}Result" }
             constraints = listOf(Constraint.CLASS, Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
@@ -84,7 +90,7 @@ val mviActivityTemplate
             name = "ActionProcessorHolder Name"
             default = "MainActionProcessorHolder"
             help = ""
-            suggest = { "${extractLetters(objectKind.value)}ActionProcessorHolder}" }
+            suggest = { "${extractLetters(objectKind.value)}ActionProcessorHolder" }
             constraints = listOf(Constraint.CLASS, Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
@@ -92,7 +98,8 @@ val mviActivityTemplate
             name = "DataSourceRepository Name"
             default = "MainDataSourceRepository"
             help = ""
-            suggest = { "${extractLetters(objectKind.value)}DataSourceRepository}" }
+            visible = { false }
+            suggest = { "${extractLetters(objectKind.value)}DataSourceRepository" }
             constraints = listOf(Constraint.CLASS, Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
@@ -100,7 +107,8 @@ val mviActivityTemplate
             name = "RemoteDataSource Name"
             default = "MainRemoteDataSource"
             help = ""
-            suggest = { "${extractLetters(objectKind.value)}RemoteDataSource}" }
+            visible = { false }
+            suggest = { "${extractLetters(objectKind.value)}RemoteDataSource" }
             constraints = listOf(Constraint.CLASS, Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
@@ -108,12 +116,14 @@ val mviActivityTemplate
             name = "LocalDataSource Name"
             default = "MainLocalDataSource"
             help = ""
-            suggest = { "${extractLetters(objectKind.value)}LocalDataSource}" }
+            visible = { false }
+            suggest = { "${extractLetters(objectKind.value)}LocalDataSource" }
             constraints = listOf(Constraint.CLASS, Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
         widgets(
                 PackageNameWidget(packageName),
+                TextFieldWidget(objectKind),
                 TextFieldWidget(activityClass),
                 TextFieldWidget(layoutName),
                 TextFieldWidget(viewModelClass),

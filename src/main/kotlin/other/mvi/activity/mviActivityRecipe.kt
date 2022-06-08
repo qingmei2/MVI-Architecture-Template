@@ -1,8 +1,8 @@
 package other.mvi.activity
 
 import com.android.tools.idea.wizard.template.*
-import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
 import other.mvi.activity.src.app_package.*
+import other.mvi.activity.res.layout.mviActivityXml
 
 fun RecipeExecutor.mviActivityRecipe(
         moduleData: ModuleTemplateData,
@@ -33,7 +33,7 @@ fun RecipeExecutor.mviActivityRecipe(
 //            useMaterial2 = false
 //    )
 
-    val mviActivity = mviActivityKt(projectData.applicationPackage!!, kotlinEscapedPackageName, className, intentClass, viewStateClass, viewModelClass, layoutName)
+    val mviActivity = mviActivityKt(projectData.applicationPackage, kotlinEscapedPackageName, className, intentClass, viewStateClass, viewModelClass, layoutName)
     val mviAction = mviActionKt(kotlinEscapedPackageName, actionClass)
     val mviActionProcessor = mviActionProcessorHolderKt(processorHolderClass, kotlinEscapedPackageName, dataSourceRepositoryName, resultClass, actionClass)
     val mviDI = mviActivityDIModuleKt(processorHolderClass, kotlinEscapedPackageName, dataSourceRepositoryName, className, viewModelClass, remoteDataSourceName, localDataSourceName)
@@ -42,6 +42,7 @@ fun RecipeExecutor.mviActivityRecipe(
     val mviRepo = mviRepositoryKt(kotlinEscapedPackageName, dataSourceRepositoryName, remoteDataSourceName, localDataSourceName)
     val mviResult = mviResultKt(kotlinEscapedPackageName, resultClass)
     val mviViewState = mviViewStateKt(kotlinEscapedPackageName, viewStateClass)
+    val mviXml = mviActivityXml()
 
     save(mviActivity, srcOut.resolve("${className}.${ktOrJavaExt}"))
     save(mviAction, srcOut.resolve("${actionClass}.${ktOrJavaExt}"))
@@ -52,4 +53,5 @@ fun RecipeExecutor.mviActivityRecipe(
     save(mviRepo, srcOut.resolve("${dataSourceRepositoryName}.${ktOrJavaExt}"))
     save(mviResult, srcOut.resolve("${resultClass}.${ktOrJavaExt}"))
     save(mviViewState, srcOut.resolve("${viewStateClass}.${ktOrJavaExt}"))
+    save(mviXml, resOut.resolve("layout/${layoutName}.xml"))
 }
